@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
 (function () {
-  const getConfig = require('./utils/getConfig')()
-  const Cover = require('./cover')
-  const coverInstant = new Cover(getConfig)
-  coverInstant.getEffectScopeData()
-})()
+  const a = require.resolve.paths("@byted/rrp-sdk");
+  console.log(a);
+  const getConfig = require("./utils/getConfig")();
+  const Cover = require("./cover");
+  const coverInstant = new Cover(getConfig);
+  coverInstant.getEffectScopeData();
+})();

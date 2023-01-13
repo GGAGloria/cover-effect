@@ -1,24 +1,26 @@
-const path = require('path')
-const fs = require('fs')
-const compiler = require('vue-template-compiler')
+const path = require("path");
+const fs = require("fs");
+const compiler = require("vue-template-compiler");
 
-function vueLoad (filePath) {
-  const codeStr = getCodeStr(filePath)
-  return compiler.parseComponent(codeStr).script.content
+function vueLoad(filePath) {
+  const codeStr = getCodeStr(filePath);
+  return compiler.parseComponent(codeStr).script.content;
 }
 
-function getCodeStr (filePath) {
-  return fs.readFileSync(filePath, 'utf-8')
+function getCodeStr(filePath) {
+  const str = fs.readFileSync(filePath, "utf-8");
+
+  return str;
 }
 
-function matchLoad (filePath) {
-  const ext = path.extname(filePath)
-  if (ext === '.vue') {
-    return vueLoad(filePath)
+function matchLoad(filePath) {
+  const ext = path.extname(filePath);
+  if (ext === ".vue") {
+    return vueLoad(filePath);
   } else {
     //   js,jsx
-    return getCodeStr(filePath)
+    return getCodeStr(filePath);
   }
 }
 
-module.exports = matchLoad
+module.exports = matchLoad;
